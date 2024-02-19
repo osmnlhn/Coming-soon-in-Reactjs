@@ -1,5 +1,4 @@
 import axios from 'axios';
-import resetData from '../data/data'
 
 
 
