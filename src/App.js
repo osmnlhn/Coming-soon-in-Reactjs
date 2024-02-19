@@ -1,32 +1,44 @@
-import React from 'react'
+import Header from './components/Header';
+import About from './components/About';
+import Profile from './components/Profile'
+import Skills from './components/Skills'
+import Projects from './components/Projects';
+import Footer from './components/Footer';
+import SwitchMode from './components/SwitchMode';
+import Form from './components/Form';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import useMode from './hooks/useMode';
 
-import FlipClockCountdown from '@leenguyen/react-flip-clock-countdown'
-import '@leenguyen/react-flip-clock-countdown/dist/index.css'
+import './App.css';
 
-import './styles.css'
+function App() {
+  const [mode, changeMode] = useMode("light");
 
-// import video
-import videoBg from '../src/assets/video.mp4'
-
-const App = () => {
   return (
-    <section className='page'>
-      {/* overlay */}
-      <div className='overlay'></div>
-      <video src={videoBg} autoPlay loop muted />
-      <div className='page__content'>
-        <h1>Launching Soon</h1>
-        <h3>
-          Leave your email and we'll let you know once the site goes live.
-        </h3>
-        <FlipClockCountdown
-          className='flip-clock'
-          to={new Date().getTime() + 48 * 3600 * 1000 + 5000}
+    <div className={"App dark:bg-zinc-900"}>
+      
+      
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <SwitchMode mode={mode} changeMode={changeMode} />
+              <Header />
+              <About />
+              <Skills />
+              <Profile />
+              <Projects />
+              <Footer />
+            </>
+          }
         />
-        <button className='btn'>Notify me</button>
-      </div>
-    </section>
-  )
+        <Route path="/hire" element={<Form />} />
+      </Routes>
+   
+
+    </div>
+  );
 }
 
-export default App
+export default App;
