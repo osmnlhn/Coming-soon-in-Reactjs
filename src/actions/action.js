@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-
+//
 
 
 export const GET_DATA = "GET_DATA";
