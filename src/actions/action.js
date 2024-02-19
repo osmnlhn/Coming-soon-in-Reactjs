@@ -13,7 +13,8 @@ export const getData = () => dispatch => {
     dispatch({ type: GET_DATA })
 
         axios
-        .get("")
+        .get("
+        api.mocki.io/v2/0bd7ffd0")
         .then(res => {
             dispatch({ type: FETCH_SUCCESS, payload: res.data });
             console.log(res.data);
